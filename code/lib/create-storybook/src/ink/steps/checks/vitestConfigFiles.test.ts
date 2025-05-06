@@ -2,7 +2,7 @@ import * as fs from 'node:fs/promises';
 
 import { describe, expect, it } from 'vitest';
 
-import { findUp } from 'find-up';
+import { up as findUp } from 'empathic/find';
 
 import * as babel from '../../../../../../core/src/babel';
 import { vitestConfigFiles } from './vitestConfigFiles';

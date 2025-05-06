@@ -1,6 +1,6 @@
 import { logger } from 'storybook/internal/node-logger';
 
-import findUp from 'find-up';
+import { up as findUp } from 'empathic/find';
 import MagicString from 'magic-string';
 import {
   ERROR_CODES,
@@ -80,7 +80,7 @@ export default async function reactDocgenLoader(
   const { debug = false } = options;
 
   if (!tsconfigPathsInitialized) {
-    const tsconfigPath = await findUp('tsconfig.json', { cwd: process.cwd() });
+    const tsconfigPath = findUp('tsconfig.json', { cwd: process.cwd() });
     const tsconfig = TsconfigPaths.loadConfig(tsconfigPath);
 
     if (tsconfig.resultType === 'success') {
