@@ -21,7 +21,7 @@ import {
 } from '@angular-devkit/build-angular/src/builders/browser/schema';
 import { JsonObject } from '@angular-devkit/core';
 import { findPackageSync } from 'fd-package-json';
-import { sync as findUpSync } from 'find-up';
+import { up as findUpSync } from 'empathic/find';
 import { from, of, throwError } from 'rxjs';
 import { catchError, map, mapTo, switchMap } from 'rxjs/operators';
 

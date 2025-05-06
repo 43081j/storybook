@@ -4,7 +4,7 @@ import { WebpackDefinePlugin, WebpackIgnorePlugin } from '@storybook/builder-web
 
 import { BuilderContext, targetFromTargetString } from '@angular-devkit/architect';
 import { JsonObject, logging } from '@angular-devkit/core';
-import { sync as findUpSync } from 'find-up';
+import { up as findUpSync } from 'empathic/find';
 import webpack from 'webpack';
 
 import { getWebpackConfig as getCustomWebpackConfig } from './angular-cli-webpack';

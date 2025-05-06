@@ -1,6 +1,6 @@
 import { dirname, join } from 'node:path';
 
-import { sync as findUpSync } from 'find-up';
+import { up as findUpSync } from 'empathic/find';
 
 export const findDistFile = (cwd: string, relativePath: string) => {
   const nearestPackageJson = findUpSync('package.json', { cwd });
