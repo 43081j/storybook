@@ -2,12 +2,12 @@ import { join, sep } from 'node:path';
 
 import { describe, expect, it, vi } from 'vitest';
 
-import { findUpSync } from 'find-up';
+import { up as findUpSync } from 'empathic/find';
 import slash from 'slash';
 
 import { getProjectRoot, normalizeStoryPath } from '../paths';
 
-vi.mock('find-up');
+vi.mock('empathic/find');
 
 describe('paths - normalizeStoryPath()', () => {
   it('returns a path starting with "./" unchanged', () => {

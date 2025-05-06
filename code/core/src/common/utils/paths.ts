@@ -1,6 +1,6 @@
 import { join, resolve, sep } from 'node:path';
 
-import { findUpSync } from 'find-up';
+import { up as findUpSync } from 'empathic/find';
 
 export const getProjectRoot = () => {
   let result;
@@ -10,7 +10,7 @@ export const getProjectRoot = () => {
   }
 
   try {
-    const found = findUpSync('.git', { type: 'directory' });
+    const found = findUpSync('.git');
     if (found) {
       result = join(found, '..');
     }
@@ -18,7 +18,7 @@ export const getProjectRoot = () => {
     //
   }
   try {
-    const found = findUpSync('.svn', { type: 'directory' });
+    const found = findUpSync('.svn');
     if (found) {
       result = result || join(found, '..');
     }
@@ -26,7 +26,7 @@ export const getProjectRoot = () => {
     //
   }
   try {
-    const found = findUpSync('.hg', { type: 'directory' });
+    const found = findUpSync('.hg');
     if (found) {
       result = result || join(found, '..');
     }
@@ -42,7 +42,7 @@ export const getProjectRoot = () => {
   }
 
   try {
-    const found = findUpSync('.yarn', { type: 'directory' });
+    const found = findUpSync('.yarn');
     if (found) {
       result = result || join(found, '..');
     }

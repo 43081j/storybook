@@ -1,7 +1,7 @@
 import { basename, parse, relative } from 'node:path';
 
 import { sync as spawnSync } from 'cross-spawn';
-import { findUpSync } from 'find-up';
+import { up as findUpSync } from 'empathic/find';
 
 import { BUNProxy } from './BUNProxy';
 import type { JsPackageManager, PackageManagerName } from './JsPackageManager';

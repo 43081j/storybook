@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { sync as spawnSync } from 'cross-spawn';
-import { findUpSync } from 'find-up';
+import { up as findUpSync } from 'empathic/find';
 
 import { BUNProxy } from './BUNProxy';
 import { JsPackageManagerFactory } from './JsPackageManagerFactory';
@@ -15,7 +15,7 @@ import { Yarn2Proxy } from './Yarn2Proxy';
 vi.mock('cross-spawn');
 const spawnSyncMock = vi.mocked(spawnSync);
 
-vi.mock('find-up');
+vi.mock('empathic/find');
 const findUpSyncMock = vi.mocked(findUpSync);
 
 describe('CLASS: JsPackageManagerFactory', () => {
@@ -122,9 +122,9 @@ describe('CLASS: JsPackageManagerFactory', () => {
       });
 
       it('PNPM LOCK IF CLOSER: when a pnpm-lock.yaml file is closer than a yarn.lock', async () => {
-        // Allow find-up to work as normal, we'll set the cwd to our fixture package
+        // Allow find to work as normal, we'll set the cwd to our fixture package
         findUpSyncMock.mockImplementation(
-          (await vi.importActual<typeof import('find-up')>('find-up')).findUpSync
+          (await vi.importActual<typeof import('empathic/find')>('empathic/find')).up
         );
 
         spawnSyncMock.mockImplementation((command) => {
@@ -240,9 +240,9 @@ describe('CLASS: JsPackageManagerFactory', () => {
       });
 
       it('when multiple lockfiles are in a project, prefers yarn', async () => {
-        // Allow find-up to work as normal, we'll set the cwd to our fixture package
+        // Allow find to work as normal, we'll set the cwd to our fixture package
         findUpSyncMock.mockImplementation(
-          (await vi.importActual<typeof import('find-up')>('find-up')).findUpSync
+          (await vi.importActual<typeof import('empathic/find')>('empathic/find')).up
         );
 
         spawnSyncMock.mockImplementation((command) => {

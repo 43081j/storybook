@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 import { FindPackageVersionsError } from 'storybook/internal/server-errors';
 
-import { findUpSync } from 'find-up';
+import { any as findUpSync } from 'empathic/find';
 import { dedent } from 'ts-dedent';
 
 import { createLogStream } from '../utils/cli';
@@ -159,13 +159,8 @@ export class PNPMProxy extends JsPackageManager {
       }
     }
 
-    const packageJsonPath = await findUpSync(
-      (dir) => {
-        const possiblePath = join(dir, 'node_modules', packageName, 'package.json');
-        return existsSync(possiblePath) ? possiblePath : undefined;
-      },
-      { cwd: basePath }
-    );
+    const possiblePath = [join('node_modules', packageName, 'package.json')];
+    const packageJsonPath = findUpSync(possiblePath, { cwd: basePath });
 
     if (!packageJsonPath) {
       return null;

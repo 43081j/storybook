@@ -1,11 +1,11 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { platform } from 'node:os';
 import { join } from 'node:path';
 
 import { logger } from 'storybook/internal/node-logger';
 import { FindPackageVersionsError } from 'storybook/internal/server-errors';
 
-import { findUp } from 'find-up';
+import { up as findUp } from 'empathic/find';
 import sort from 'semver/functions/sort.js';
 import { dedent } from 'ts-dedent';
 
@@ -89,13 +89,8 @@ export class NPMProxy extends JsPackageManager {
     packageName: string,
     basePath = this.cwd
   ): Promise<PackageJson | null> {
-    const packageJsonPath = await findUp(
-      (dir) => {
-        const possiblePath = join(dir, 'node_modules', packageName, 'package.json');
-        return existsSync(possiblePath) ? possiblePath : undefined;
-      },
-      { cwd: basePath }
-    );
+    const possiblePath = join('node_modules', packageName, 'package.json');
+    const packageJsonPath = findUp(possiblePath, { cwd: basePath });
 
     if (!packageJsonPath) {
       return null;

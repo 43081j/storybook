@@ -2,7 +2,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { findUp } from 'find-up';
+import { up as findUp } from 'empathic/find';
 import { dedent } from 'ts-dedent';
 
 import type { JsPackageManager } from '../common/js-package-manager/JsPackageManager';
@@ -13,8 +13,8 @@ import {
   normalizeExtends,
 } from './eslintPlugin';
 
-vi.mock('find-up', () => ({
-  findUp: vi.fn(),
+vi.mock('empathic/find', () => ({
+  up: vi.fn(),
 }));
 
 vi.mock(import('node:fs/promises'), async (importOriginal) => {
@@ -39,7 +39,7 @@ describe('extractEslintInfo', () => {
   });
 
   it('should find ESLint config file with supported extension', async () => {
-    vi.mocked(findUp).mockImplementation(async (fileName) => {
+    vi.mocked(findUp).mockImplementation((fileName) => {
       return String(fileName) === '.eslintrc.js' ? String(fileName) : undefined;
     });
 
@@ -48,14 +48,14 @@ describe('extractEslintInfo', () => {
   });
 
   it('should return undefined if no ESLint config file is found', async () => {
-    vi.mocked(findUp).mockImplementation(async () => undefined);
+    vi.mocked(findUp).mockImplementation(() => undefined);
 
     const result = await findEslintFile();
     expect(result).toBeUndefined();
   });
 
   it('should throw error for unsupported ESLint config file extensions', async () => {
-    vi.mocked(findUp).mockImplementation(async () => {
+    vi.mocked(findUp).mockImplementation(() => {
       return '.eslintrc.yaml';
     });
 
@@ -68,7 +68,7 @@ describe('extractEslintInfo', () => {
     mockPackageManager.getAllDependencies.mockResolvedValue({});
     mockPackageManager.retrievePackageJson.mockResolvedValue({});
 
-    vi.mocked(findUp).mockImplementation(async () => undefined);
+    vi.mocked(findUp).mockImplementation(() => undefined);
 
     const result = await extractEslintInfo(mockPackageManager as any);
 
@@ -86,7 +86,7 @@ describe('extractEslintInfo', () => {
       eslintConfig: '.eslintrc.js',
     });
 
-    vi.mocked(findUp).mockImplementation(async (fileName) =>
+    vi.mocked(findUp).mockImplementation((fileName) =>
       String(fileName) === '.eslintrc.js' ? String(fileName) : undefined
     );
 

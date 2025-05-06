@@ -5,7 +5,7 @@ import type { JsPackageManager, PackageJsonWithMaybeDeps } from 'storybook/inter
 import { HandledError, commandLog } from 'storybook/internal/common';
 import { logger } from 'storybook/internal/node-logger';
 
-import { findUpSync } from 'find-up';
+import { any as findUpSync } from 'empathic/find';
 import prompts from 'prompts';
 import semver from 'semver';
 

@@ -5,7 +5,7 @@ import { readConfig, writeConfig } from 'storybook/internal/csf-tools';
 
 import commentJson from 'comment-json';
 import detectIndent from 'detect-indent';
-import { findUp } from 'find-up';
+import { up as findUp } from 'empathic/find';
 import picocolors from 'picocolors';
 import prompts from 'prompts';
 import { dedent } from 'ts-dedent';
@@ -25,7 +25,7 @@ export const findEslintFile = async () => {
   // Check for unsupported files
   for (const prefix of filePrefixes) {
     for (const ext of UNSUPPORTED_ESLINT_EXTENSIONS) {
-      const file = await findUp(`${prefix}.${ext}`);
+      const file = findUp(`${prefix}.${ext}`);
       if (file) {
         throw new Error(`Unsupported ESLint config extension: .${ext}`);
       }
@@ -35,7 +35,7 @@ export const findEslintFile = async () => {
   // Find supported ESLint config files
   for (const prefix of filePrefixes) {
     for (const ext of SUPPORTED_ESLINT_EXTENSIONS) {
-      const file = await findUp(`${prefix}.${ext}`);
+      const file = findUp(`${prefix}.${ext}`);
       if (file) {
         return file;
       }

@@ -4,11 +4,11 @@ import { dirname, join } from 'node:path';
 import { logger } from 'storybook/internal/node-logger';
 import type { Options, Ref } from 'storybook/internal/types';
 
-import { findUp } from 'find-up';
+import { up as findUp } from 'empathic/find';
 import resolveFrom from 'resolve-from';
 
 export const getAutoRefs = async (options: Options): Promise<Record<string, Ref>> => {
-  const location = await findUp('package.json', { cwd: options.configDir });
+  const location = findUp('package.json', { cwd: options.configDir });
   if (!location) {
     return {};
   }

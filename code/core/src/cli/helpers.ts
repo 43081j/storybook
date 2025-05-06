@@ -11,7 +11,7 @@ import {
 import { versions as storybookMonorepoPackages } from 'storybook/internal/common';
 import type { SupportedFrameworks, SupportedRenderers } from 'storybook/internal/types';
 
-import { findUpSync } from 'find-up';
+import { up as findUpSync } from 'empathic/find';
 import picocolors from 'picocolors';
 import { coerce, major, satisfies } from 'semver';
 import stripJsonComments from 'strip-json-comments';
