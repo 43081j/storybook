@@ -6142,11 +6142,10 @@ __metadata:
   resolution: "@storybook/builder-vite@workspace:builders/builder-vite"
   dependencies:
     "@storybook/csf-plugin": "workspace:*"
-    "@types/find-cache-dir": "npm:^3.2.1"
     "@types/node": "npm:^22.0.0"
     browser-assert: "npm:^1.2.1"
+    empathic: "npm:^1.1.0"
     es-module-lexer: "npm:^1.5.0"
-    find-cache-dir: "npm:^3.0.0"
     glob: "npm:^10.0.0"
     knitwork: "npm:^1.1.0"
     magic-string: "npm:^0.30.0"
@@ -7547,13 +7546,6 @@ __metadata:
     "@types/qs": "npm:*"
     "@types/serve-static": "npm:*"
   checksum: 10c0/12e562c4571da50c7d239e117e688dc434db1bac8be55613294762f84fd77fbd0658ccd553c7d3ab02408f385bc93980992369dd30e2ecd2c68c358e6af8fabf
-  languageName: node
-  linkType: hard
-
-"@types/find-cache-dir@npm:^3.2.1":
-  version: 3.2.1
-  resolution: "@types/find-cache-dir@npm:3.2.1"
-  checksum: 10c0/68059aec88ef776a689c1711a881fd91a9ce1b03dd5898ea1d2ac5d77d7b0235f21fdf210f380c13deca8b45e4499841a63aaf31fd2123af687f2c6b472f41ce
   languageName: node
   linkType: hard
 
@@ -12966,6 +12958,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"empathic@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "empathic@npm:1.1.0"
+  checksum: 10c0/ed906c4ad6dabe1477ed00d6420f79eff8ac72e2eb580aab42406f50160fd34d66e8381e92b405e96d75a826a840706af261fd397c3e7db4d1a293d23e2e72f7
+  languageName: node
+  linkType: hard
+
 "encodeurl@npm:~1.0.2":
   version: 1.0.2
   resolution: "encodeurl@npm:1.0.2"
@@ -14713,7 +14712,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"find-cache-dir@npm:^3.0.0, find-cache-dir@npm:^3.3.1":
+"find-cache-dir@npm:^3.3.1":
   version: 3.3.2
   resolution: "find-cache-dir@npm:3.3.2"
   dependencies:
